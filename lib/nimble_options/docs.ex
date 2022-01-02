@@ -41,7 +41,7 @@ defmodule NimbleOptions.Docs do
 
   defp option_doc({key, schema}, {docs, sections, level}) do
     description =
-      [get_required_str(schema), get_doc_str(schema), get_default_str(schema)]
+      [get_default_str(schema), get_required_str(schema), get_doc_str(schema)]
       |> Enum.reject(&is_nil/1)
       |> case do
         [] -> ""
@@ -76,7 +76,7 @@ defmodule NimbleOptions.Docs do
 
   defp get_default_str(schema) do
     if Keyword.has_key?(schema, :default) do
-      "The default value is `#{inspect(schema[:default])}`."
+      "(default value: `#{inspect(schema[:default])}`)"
     end
   end
 
